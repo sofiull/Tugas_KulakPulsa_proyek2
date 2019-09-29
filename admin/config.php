@@ -1,4 +1,4 @@
 <?php 
 $con=mysqli_connect("localhost","root","");
-mysqli_select_db($con, "malasngoding_kios")
+mysqli_select_db($con, "kulak_pulsa")
 ?>
