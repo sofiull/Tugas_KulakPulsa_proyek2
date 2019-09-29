@@ -15,25 +15,22 @@
 	<script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.js"></script>	
 </head>
 <body>
-	<div class="navbar navbar-default">
+	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="http://www.malasngoding.com" class="navbar-brand">KULAK PULSA</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
+			<div style="margin-top: 10px" class="navbar-header">
+				<a href="http://www.malasngoding.com" class="navbar-brand"><font size="6">KULAK PULSA</font></a>
 			</div>
 			<div class="collapse navbar-collapse">				
 				<ul class="nav navbar-nav navbar-right">
-					
-					<li><a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Hy , <?php echo $_SESSION['uname']  ?>&nbsp&nbsp<span class="glyphicon glyphicon-user"></span></a></li>
+					<li>
+						<a href="#"><font size="3px">Hy , <?php echo $_SESSION['uname']?>&nbsp&nbsp</font>
+						<img class="img-circle" alt="Cinque Terre" height="35" weight="30" src="foto/admin1.jpg">
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
-	</div>
+	</nav>
 
 	<!-- modal input -->
 	<div id="modalpesan" class="modal fade">
@@ -62,7 +59,7 @@
 	</div>
 
 	<div class="col-md-2">
-		<div class="row">
+		<!-- <div class="row">
 			<?php 
 			$use=$_SESSION['uname'];
 			$fo=mysqli_query($con,"select foto from admin where usernameAdmin='$use'");
@@ -71,13 +68,13 @@
 
 				<div class="col-xs-6 col-md-12">
 					<a class="thumbnail">
-						<img class="img-responsive" src="foto/<?php echo $f['foto']; ?>">
+						<img class="img-circle" alt="Cinque Terre" class="img-responsive" src="foto/<?php echo $f['foto']; ?>">
 					</a>
 				</div>
 				<?php 
 			}
 			?>		
-		</div>
+		</div>-->
 
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
