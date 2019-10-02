@@ -39,6 +39,12 @@
 						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 						<input type="password" class="form-control" placeholder="Password" name="pass">
 					</div>
+					<div class="input-group">
+						<select name="jenisUser">
+							<option class="form-control" value="1">Admin</option>
+							<option value="2">User</option>
+						</select>
+					</div>
 					<div class="input-group">			
 						<input type="submit" class="btn btn-primary" value="Login">
 					</div>
