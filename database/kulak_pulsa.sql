@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 02, 2019 at 04:03 PM
+-- Generation Time: Oct 02, 2019 at 04:34 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.2.22
 
@@ -164,6 +164,18 @@ CREATE TABLE `pulsa` (
 INSERT INTO `pulsa` (`id_pulsa`, `namapulsa`, `nominal`) VALUES
 (1, 'Pulsa 5R', '5000');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(5) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -217,6 +229,12 @@ ALTER TABLE `pulsa`
   ADD PRIMARY KEY (`id_pulsa`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -261,6 +279,12 @@ ALTER TABLE `penyedia`
 --
 ALTER TABLE `pulsa`
   MODIFY `id_pulsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
