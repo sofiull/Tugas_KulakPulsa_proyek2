@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 26, 2019 at 05:09 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Host: localhost
+-- Generation Time: Oct 02, 2019 at 04:34 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,8 +32,15 @@ CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
   `usernameAdmin` varchar(45) NOT NULL,
   `passwordAdmin` varchar(45) NOT NULL,
-  `foto` varchar(100) NOT NULL	
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `usernameAdmin`, `passwordAdmin`, `foto`) VALUES
+(1, 'adminkulak', 'adminkulak', 'admin1.jpg');
 
 -- --------------------------------------------------------
 
@@ -47,6 +54,14 @@ CREATE TABLE `detailkulakpulsa` (
   `harga` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `detailkulakpulsa`
+--
+
+INSERT INTO `detailkulakpulsa` (`id_detailkulakpulsa`, `id_pulsa`, `harga`) VALUES
+(1, 1, '213123'),
+(2, 1, '5200');
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +74,14 @@ CREATE TABLE `infopenyedia` (
   `no_telp` varchar(15) NOT NULL,
   `jam_layanan` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `infopenyedia`
+--
+
+INSERT INTO `infopenyedia` (`id_infopenyedia`, `nama_cs`, `no_telp`, `jam_layanan`) VALUES
+(1, 'hulahoop cs', '12345', '12-23'),
+(2, 'mentari cs', '0022211', '13-22');
 
 -- --------------------------------------------------------
 
@@ -75,6 +98,14 @@ CREATE TABLE `kulak_pulsa` (
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kulak_pulsa`
+--
+
+INSERT INTO `kulak_pulsa` (`id_kulakpulsa`, `id_operator`, `id_penyedia`, `id_detailkulakpulsa`, `publisher`, `tanggal`) VALUES
+(1, 2, 2, 1, 1, '2019-09-10'),
+(2, 1, 2, 2, 1, '2019-09-11');
+
 -- --------------------------------------------------------
 
 --
@@ -85,6 +116,14 @@ CREATE TABLE `operator` (
   `id_operator` int(11) NOT NULL,
   `nama_operator` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `operator`
+--
+
+INSERT INTO `operator` (`id_operator`, `nama_operator`) VALUES
+(1, 'telkomsel'),
+(2, 'indosat');
 
 -- --------------------------------------------------------
 
@@ -98,6 +137,14 @@ CREATE TABLE `penyedia` (
   `id_infopenyedia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `penyedia`
+--
+
+INSERT INTO `penyedia` (`id_penyedia`, `namapenyedia`, `id_infopenyedia`) VALUES
+(1, 'hulahoop', 1),
+(2, 'mentari', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +155,25 @@ CREATE TABLE `pulsa` (
   `id_pulsa` int(11) NOT NULL,
   `namapulsa` varchar(100) NOT NULL,
   `nominal` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pulsa`
+--
+
+INSERT INTO `pulsa` (`id_pulsa`, `namapulsa`, `nominal`) VALUES
+(1, 'Pulsa 5R', '5000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(5) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -163,6 +229,12 @@ ALTER TABLE `pulsa`
   ADD PRIMARY KEY (`id_pulsa`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -170,43 +242,49 @@ ALTER TABLE `pulsa`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `detailkulakpulsa`
 --
 ALTER TABLE `detailkulakpulsa`
-  MODIFY `id_detailkulakpulsa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detailkulakpulsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `infopenyedia`
 --
 ALTER TABLE `infopenyedia`
-  MODIFY `id_infopenyedia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_infopenyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kulak_pulsa`
 --
 ALTER TABLE `kulak_pulsa`
-  MODIFY `id_kulakpulsa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kulakpulsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `operator`
 --
 ALTER TABLE `operator`
-  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `penyedia`
 --
 ALTER TABLE `penyedia`
-  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pulsa`
 --
 ALTER TABLE `pulsa`
-  MODIFY `id_pulsa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pulsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
