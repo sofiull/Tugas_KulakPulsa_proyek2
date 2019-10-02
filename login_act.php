@@ -5,14 +5,14 @@ $uname=$_POST['uname'];
 $pass=$_POST['pass'];
 $jenisUser=$_POST['jenisUser'];
 $pas=md5($pass);
-if ($jenisUser == "admin") {
+if ($jenisUser == "1") {
 	$query=mysqli_query($con,"select * from admin where usernameAdmin='$uname' and passwordAdmin='$pass'")or die(mysqli_error());
 }else{
 	$query=mysqli_query($con,"select * from user where username='$uname' and password='$pass'")or die(mysqli_error());
 }
 
 if(mysqli_num_rows($query)==1){
-	if($jenisUser == "admin"){
+	if($jenisUser == "1"){
 		$_SESSION['uname']=$uname;
 		header("location:admin/index.php");
 	}else{
