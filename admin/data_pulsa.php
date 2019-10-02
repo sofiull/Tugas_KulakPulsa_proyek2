@@ -1,11 +1,11 @@
 <?php include 'header.php'; ?>
 
-<h3><span class="glyphicon glyphicon-briefcase"></span>  Data Barang</h3>
-<button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span>Tambah Barang</button>
+<h3><span class="glyphicon glyphicon-briefcase"></span>  Data Harga Pulsa</h3>
+<button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span>Tambah / Import Data</button>
 <br/>
 <br/>
 
-<?php 
+<!-- <?php 
 $periksa=mysqli_query($con,"select * from barang where jumlah <=3");
 while($q=mysqli_fetch_array($periksa)){	
 	if($q['jumlah']<=3){	
@@ -19,11 +19,11 @@ while($q=mysqli_fetch_array($periksa)){
 		<?php
 	}
 }
-?>
+?> -->
 
 <?php 
 $per_hal=10;
-$jumlah_record=mysqli_query($con,"SELECT COUNT(*) from barang");
+$jumlah_record=mysqli_query($con,"SELECT COUNT(*) from kulak_pulsa");
 $jum=mysqli_fetch_row($jumlah_record);
 $halaman=ceil($jum[0] / $per_hal);
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
@@ -54,41 +54,44 @@ $start = ($page - 1) * $per_hal;
 		<th class="col-md-1">No</th>
 		<th class="col-md-2">Nama Operator</th>
 		<th class="col-md-2">Nama Penyedia</th>
-		<th class="col-md-2">Nominal Pulsa</th>
-		<th class="col-md-2">Harga pulsa</th>
-		<th class="col-md-2">Admin</th>
-		<th class="col-md-2">tanggal</th>
-		<th class="col-md-4">Opsi</th>
+		<th class="col-md-1"><center>Nominal Pulsa</center></th>
+		<th class="col-md-1"><center>Harga pulsa</center></th>
+		<th class="col-md-1">Admin</th>
+		<th class="col-md-1">tanggal</th>
+		<th class="col-md-6"><center>Opsi</center></th>
 	</tr>
 	<?php 
 	if(isset($_GET['cari'])){
 		$cari=mysql_real_escape_string($_GET['cari']);
-		$brg=mysql_query("select * from barang where nama like '$cari' or jenis like '$cari'");
+		// Test It:
+		// select o.nama_operator from kulak_pulsa k inner join operator o ON k.id_operator= o.id_operator WHERE o.nama_operator like '$cari'
+		$pls=mysql_query("select * from kulak_pulsa where nama like '$cari' or jenis like '$cari'");
 	}else{
-		$brg=mysqli_query($con,"select * from barang limit $start, $per_hal");
+		$pls=mysqli_query($con,"SELECT DISTINCT k.id_kulakpulsa, o.nama_operator,p.namapenyedia,pl.nominal, dp.harga, a.usernameAdmin, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa ORDER BY k.id_kulakpulsa ASC LIMIT $start,$per_hal" );
 	}
 	$no=1;
-	while($b=mysqli_fetch_array($brg)){
+	while($b=mysqli_fetch_array($pls)){
 
 		?>
 		<tr>
 			<td><?php echo $no++ ?></td>
-			<td><?php echo $b['nama'] ?></td>
-			<td>Rp.<?php echo number_format($b['harga']) ?>,-</td>
-			<td><?php echo $b['jumlah'] ?></td>
-			<td><?php echo "harga" ?></td>
-			<td><?php echo "admin" ?></td>
-			<td><?php echo "tanggal" ?></td>
-			<td>
+			<td><?php echo $b['nama_operator'] ?></td>
+			<td><?php echo $b['namapenyedia']?></td>
+			<td>Rp.<?php echo number_format( $b['nominal']) ?>,-</td>
+			<td>Rp.<?php echo number_format( $b['harga']) ?>,-</td>
+			<td><?php echo $b['usernameAdmin'] ?></td>
+			<td><?php echo $b['tanggal'] ?></td>
+			<td><center>
 				<a href="det_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-info">Detail</a>
-				<a href="edit.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Edit</a>
-				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapus.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
+				<a href="edit.php?id=<?php echo $b['id_kulakpulsa'] ?>" class="btn btn-warning">Edit</a>
+				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='hapus.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
+				</center>
 			</td>
 		</tr>		
 		<?php 
 	}
 	?>
-	<tr>
+	<!-- <tr>
 		<td colspan="4">Total Modal</td>
 		<td>			
 		<?php 
@@ -98,7 +101,7 @@ $start = ($page - 1) * $per_hal;
 			echo "<b> Rp.". number_format($xx['total']).",-</b>";		
 		?>
 		</td>
-	</tr>
+	</tr> -->
 </table>
 <ul class="pagination">			
 			<?php 

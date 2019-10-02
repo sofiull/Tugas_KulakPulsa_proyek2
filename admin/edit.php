@@ -2,41 +2,62 @@
 include 'header.php';
 ?>
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Edit Barang</h3>
-<a class="btn" href="barang.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
+<a class="btn" href="data_pulsa.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
 <?php
-$id_brg=mysql_real_escape_string($_GET['id']);
-$det=mysql_query("select * from barang where id='$id_brg'")or die(mysql_error());
-while($d=mysql_fetch_array($det)){
+$id_pls=($_GET['id']);
+$det=mysqli_query($con,"SELECT id_kulakpulsa FROM kulak_pulsa WHERE id_kulakpulsa ='$id_pls'")or die(mysqli_error());
+while($d=mysqli_fetch_array($det)){
 ?>					
 	<form action="update.php" method="post">
 		<table class="table">
 			<tr>
 				<td></td>
-				<td><input type="hidden" name="id" value="<?php echo $d['id'] ?>"></td>
+				<td><input type="text" name="id" value="<?php echo $d['id_kulakpulsa'] ?>"></td>
 			</tr>
 			<tr>
-				<td>Nama</td>
-				<td><input type="text" class="form-control" name="nama" value="<?php echo $d['nama'] ?>"></td>
+				<tr>
+				<td>Nama Operator</td>
+				<td>
+					<select name="operator">
+						<?php
+							while ($op=mysqli_fetch_array($operator)) { ?>
+								<option value="<?php echo $op['id_operator'] ?>"><?php echo $op['nama_operator'];?></option>;
+						<?
+							}
+						?>
+					</select>
+				</td>
+			</tr>
 			</tr>
 			<tr>
-				<td>Jenis</td>
-				<td><input type="text" class="form-control" name="jenis" value="<?php echo $d['jenis'] ?>"></td>
+				<td>Nama Penyedia</td>
+				<td>
+					<select name="penyedia">
+						<?php
+							while ($pe=mysqli_fetch_array($penyedia)) { ?>
+								<option value="<?php echo $pe['id_penyedia'] ?>"><?php echo $pe['namapenyedia'];?></option>;
+						<?
+							}
+						?>
+					</select>
+				</td>
 			</tr>
 			<tr>
-				<td>Suplier</td>
-				<td><input type="text" class="form-control" name="suplier" value="<?php echo $d['suplier'] ?>"></td>
-			</tr>
-			<tr>
-				<td>Modal</td>
-				<td><input type="text" class="form-control" name="modal" value="<?php echo $d['modal'] ?>"></td>
+				<td>Nominal</td>
+				<td>
+					<select name="nominal">
+						<?php
+							while ($np=mysqli_fetch_array($nominalPulsa)) { ?>
+								<option value="<?php echo $np['id_pulsa'] ?>"><?php echo $np['namapulsa'];?> -> Rp.<?php echo number_format ($np['nominal'])?></option>;
+						<?
+							}
+						?>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>Harga</td>
-				<td><input type="text" class="form-control" name="harga" value="<?php echo $d['harga'] ?>"></td>
-			</tr>
-			<tr>
-				<td>Jumlah</td>
-				<td><input type="text" class="form-control" name="jumlah" value="<?php echo $d['jumlah'] ?>"></td>
+				<td><input type="text" class="form-control" name="harga"></td>
 			</tr>
 			<tr>
 				<td></td>
