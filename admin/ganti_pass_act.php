@@ -1,20 +1,25 @@
 <?php 
 include 'config.php';
 $user=$_POST['user'];
-$lama=md5($_POST['lama']);
+$lama=($_POST['lama']);
 $baru=$_POST['baru'];
 $ulang=$_POST['ulang'];
+echo $lama;
+echo $baru;
 
-$cek=mysql_query("select * from admin where pass='$lama' and uname='$user'");
-if(mysql_num_rows($cek)==1){
+$cek=mysqli_query("select * from admin where passwordAdmin='$lama' and usernameAdmin='$user'");
+if(mysqli_num_rows($cek)==1){
 	if($baru==$ulang){
-		$b = md5($baru);
-		mysql_query("update admin set pass='$b' where uname='$user'");
+		$b = ($baru);
+		mysqli_query("update admin set passwordAdmin='$b' where usernameAdmin='$user'");
+		//echo "<div class='alert alert-success'>Password berhasil di ganti!</div>";
 		header("location:ganti_pass.php?pesan=oke");
 	}else{
+		//echo "<div class='alert alert-danger'>Password masih sama dengan sebelumnya, silahkan diganti!</div>";
 		header("location:ganti_pass.php?pesan=tdksama");
 	}
 }else{
+	//echo "<div class='alert alert-danger'>Password gagal di ganti !!     Periksa Kembali Password yang anda masukkan !!</div>";
 	header("location:ganti_pass.php?pesan=gagal");
 }
 

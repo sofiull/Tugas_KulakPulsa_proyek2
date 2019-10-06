@@ -1,12 +1,14 @@
 <?php 
 include 'header.php';
+include 'config.php';
+//include 'ganti_pass_act.php';
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Password</h3>
 <br/><br/>
 <?php 
 if(isset($_GET['pesan'])){
-	$pesan=mysql_real_escape_string($_GET['pesan']);
+	$pesan=mysqli_real_escape_string($con, $_GET['pesan']);
 	if($pesan=="gagal"){
 		echo "<div class='alert alert-danger'>Password gagal di ganti !!     Periksa Kembali Password yang anda masukkan !!</div>";
 	}else if($pesan=="tdksama"){
@@ -21,7 +23,7 @@ if(isset($_GET['pesan'])){
 <div class="col-md-5 col-md-offset-3">
 	<form action="ganti_pass_act.php" method="post">
 		<div class="form-group">
-			<input name="user" type="hidden" value="<?php echo $_SESSION['uname']; ?>">
+			<input name="user" type="hidden" value="<?php echo $_SESSION['usernameAdmin']; ?>">
 		</div>
 		<div class="form-group">
 			<label>Password Lama</label>

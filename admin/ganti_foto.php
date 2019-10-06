@@ -1,12 +1,13 @@
 <?php 
 include 'header.php';
+include 'config.php';
 ?>
 
 <h3><span class="glyphicon glyphicon-picture"></span>  Ganti Foto</h3>
 <br/><br/>
 <?php 
 if(isset($_GET['pesan'])){
-	$pesan=mysqli_real_escape_string($con, $_GET['pesan']);
+	$pesan=mysqli_real_escape_string($con ,$_GET['pesan']);
 	if($pesan=="oke"){
 		echo "<div class='alert alert-success'>Foto berhasil di ganti !! </div>";
 	}
