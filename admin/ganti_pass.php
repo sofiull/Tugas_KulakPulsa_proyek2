@@ -23,7 +23,7 @@ if(isset($_GET['pesan'])){
 <div class="col-md-5 col-md-offset-3">
 	<form action="ganti_pass_act.php" method="post">
 		<div class="form-group">
-			<input name="user" type="hidden" value="<?php echo $_SESSION['usernameAdmin']; ?>">
+			<input name="user" type="text" value="<?php echo $_SESSION['uname']; ?>">
 		</div>
 		<div class="form-group">
 			<label>Password Lama</label>
