@@ -9,7 +9,7 @@ include 'header.php';
 $id_pulsa=mysqli_real_escape_string($con, $_GET['id']);
 
 
-$det=mysqli_query($con, "select * from kulak_pulsa where id_kulakpulsa='$id_pulsa'")or die(mysqli_error());
+$det=mysqli_query($con, "SELECT DISTINCT k.id_kulakpulsa, o.nama_operator,p.namapenyedia,pl.nominal, dp.harga, a.usernameAdmin, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa")or die(mysqli_error());
 while($d=mysqli_fetch_array($det)){
 	?>					
 	<table class="table">
@@ -19,7 +19,7 @@ while($d=mysqli_fetch_array($det)){
 		</tr>
 		<tr>
 			<td>Nama Penyedia</td>
-			<td><?php echo $d['nama_penyedia'] ?></td>
+			<td><?php echo $d['namapenyedia'] ?></td>
 		</tr>
 		<tr>
 			<td>Nominal</td>
@@ -31,7 +31,7 @@ while($d=mysqli_fetch_array($det)){
 		</tr>
 		<tr>
 			<td>Publisher</td>
-			<td><?php echo($d['publisher']) ?></td>
+			<td><?php echo($d['usernameAdmin']) ?></td>
 		</tr>
 		<tr>
 			<td>Tanggal</td>
