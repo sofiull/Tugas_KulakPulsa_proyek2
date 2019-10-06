@@ -6,7 +6,7 @@ include 'header.php';
 <br/><br/>
 <?php 
 if(isset($_GET['pesan'])){
-	$pesan=mysql_real_escape_string($_GET['pesan']);
+	$pesan=mysqli_real_escape_string($_GET['pesan']);
 	if($pesan=="oke"){
 		echo "<div class='alert alert-success'>Foto berhasil di ganti !! </div>";
 	}
