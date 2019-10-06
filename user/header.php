@@ -18,12 +18,12 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div style="margin-top: 10px" class="navbar-header">
-				<a href="http://www.malasngoding.com" class="navbar-brand"><font size="6">KULAK PULSA</font></a>
+				<a href="index.php" class="navbar-brand"><font size="6">KULAK PULSA</font></a>
 			</div>
 			<div class="collapse navbar-collapse">				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#"><font size="3px">Hy , <?php echo $_SESSION['uname']?>&nbsp&nbsp</font>
+						<a href="#"><font size="3px">Hey , <?php echo $_SESSION['uname']?>&nbsp&nbsp</font>
 						<img class="img-circle" alt="Cinque Terre" height="35" weight="30" src="foto/user1.jpg">
 						</a>
 					</li>

@@ -1,18 +1,20 @@
 <?php 
 include 'header.php';
+include 'config.php';
+//include 'ganti_pass_act.php';
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Password</h3>
 <br/><br/>
 <?php 
 if(isset($_GET['pesan'])){
-	$pesan=mysql_real_escape_string($_GET['pesan']);
+	$pesan=mysqli_real_escape_string($con, $_GET['pesan']);
 	if($pesan=="gagal"){
 		echo "<div class='alert alert-danger'>Password gagal di ganti !!     Periksa Kembali Password yang anda masukkan !!</div>";
 	}else if($pesan=="tdksama"){
 		echo "<div class='alert alert-warning'>Password yang anda masukkan tidak sesuai  !!     silahkan ulangi !! </div>";
 	}else if($pesan=="oke"){
-		echo "<div class='alert alert-success'>Password yang anda masukkan tidak sesuai  !!     silahkan ulangi !! </div>";
+		echo "<div class='alert alert-success'>Password berhasil diganti</div>";
 	}
 }
 ?>

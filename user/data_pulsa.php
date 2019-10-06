@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Data Harga Pulsa</h3>
-<!--<button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span>Tambah / Import Data</button>-->
+<!-- <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span>Tambah / Import Data</button> -->
 <br/>
 <br/>
 
@@ -40,7 +40,7 @@ $start = ($page - 1) * $per_hal;
 			<td><?php echo $halaman; ?></td>
 		</tr>
 	</table>
-	<a style="margin-bottom:10px" href="lap_barang.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
+	<a style="margin-bottom:10px" href="lap_datapulsa.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
 </div>
 <form action="cari_act.php" method="get">
 	<div class="input-group col-md-5 col-md-offset-7">
@@ -83,8 +83,8 @@ $start = ($page - 1) * $per_hal;
 			<td><?php echo $b['tanggal'] ?></td>
 			<td><center>
 				<a href="det_pulsa.php?id=<?php echo $b['id_kulakpulsa']; ?>" class="btn btn-info">Detail</a>
-				<!--<a href="edit.php?id=<?php //echo $b['id_kulakpulsa'] ?>" class="btn btn-warning">Edit</a>
-				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='hapus.php?id=<?php //echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>-->
+				<!--<a href="edit.php?id=<?php echo $b['id_kulakpulsa'] ?>" class="btn btn-warning">Edit</a>
+				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='hapus.php?id=<?php echo $b['id_kulakpulsa']; ?>' }" class="btn btn-danger">Hapus</a>-->
 				</center>
 			</td>
 		</tr>		
