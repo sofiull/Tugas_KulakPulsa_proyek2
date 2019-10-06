@@ -82,9 +82,9 @@ $start = ($page - 1) * $per_hal;
 			<td><?php echo $b['usernameAdmin'] ?></td>
 			<td><?php echo $b['tanggal'] ?></td>
 			<td><center>
-				<a href="det_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-info">Detail</a>
+				<a href="det_barang.php?id=<?php echo $b['id_kulakpulsa']; ?>" class="btn btn-info">Detail</a>
 				<a href="edit.php?id=<?php echo $b['id_kulakpulsa'] ?>" class="btn btn-warning">Edit</a>
-				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='hapus.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
+				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='hapus.php?id=<?php echo $b['id_kulakpulsa']; ?>' }" class="btn btn-danger">Hapus</a>
 				</center>
 			</td>
 		</tr>		
