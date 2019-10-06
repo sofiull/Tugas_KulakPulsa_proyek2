@@ -7,6 +7,7 @@ include 'header.php';
 $id_pls=($_GET['id']);
 $det=mysqli_query($con,"SELECT id_kulakpulsa FROM kulak_pulsa WHERE id_kulakpulsa ='$id_pls'")or die(mysqli_error());
 while($d=mysqli_fetch_array($det)){
+
 ?>					
 	<form action="update.php" method="post">
 		<table class="table">
@@ -22,7 +23,7 @@ while($d=mysqli_fetch_array($det)){
 						<?php
 							while ($op=mysqli_fetch_array($operator)) { ?>
 								<option value="<?php echo $op['id_operator'] ?>"><?php echo $op['nama_operator'];?></option>;
-						<?
+						<?php
 							}
 						?>
 					</select>
@@ -36,7 +37,7 @@ while($d=mysqli_fetch_array($det)){
 						<?php
 							while ($pe=mysqli_fetch_array($penyedia)) { ?>
 								<option value="<?php echo $pe['id_penyedia'] ?>"><?php echo $pe['namapenyedia'];?></option>;
-						<?
+						<?php
 							}
 						?>
 					</select>
@@ -49,7 +50,7 @@ while($d=mysqli_fetch_array($det)){
 						<?php
 							while ($np=mysqli_fetch_array($nominalPulsa)) { ?>
 								<option value="<?php echo $np['id_pulsa'] ?>"><?php echo $np['namapulsa'];?> -> Rp.<?php echo number_format ($np['nominal'])?></option>;
-						<?
+						<?php
 							}
 						?>
 					</select>
@@ -65,7 +66,9 @@ while($d=mysqli_fetch_array($det)){
 			</tr>
 		</table>
 	</form>
-	<?php 
-}
+<?php 
+
+} 
+
 ?>
 <?php include 'footer.php'; ?>
