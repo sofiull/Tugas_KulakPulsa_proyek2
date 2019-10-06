@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div style="margin-top: 10px" class="navbar-header">
-				<a href="http://www.malasngoding.com" class="navbar-brand"><font size="6">KULAK PULSA</font></a>
+				<a href="index.php" class="navbar-brand"><font size="6">KULAK PULSA</font></a>
 			</div>
 			<div class="collapse navbar-collapse">				
 				<ul class="nav navbar-nav navbar-right">
