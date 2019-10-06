@@ -1,17 +1,15 @@
 <?php 
 include 'config.php';
 $user=$_POST['user'];
-$lama=($_POST['lama']);
+$lama=$_POST['lama'];
 $baru=$_POST['baru'];
 $ulang=$_POST['ulang'];
-echo $lama;
-echo $baru;
 
-$cek=mysqli_query("select * from admin where passwordAdmin='$lama' and usernameAdmin='$user'");
+$cek=mysqli_query($con,"select * from admin where passwordAdmin='$lama' and usernameAdmin='$user'");
 if(mysqli_num_rows($cek)==1){
 	if($baru==$ulang){
 		$b = ($baru);
-		mysqli_query("update admin set passwordAdmin='$b' where usernameAdmin='$user'");
+		mysqli_query($con,"update admin set passwordAdmin='$b' where usernameAdmin='$user'");
 		//echo "<div class='alert alert-success'>Password berhasil di ganti!</div>";
 		header("location:ganti_pass.php?pesan=oke");
 	}else{
