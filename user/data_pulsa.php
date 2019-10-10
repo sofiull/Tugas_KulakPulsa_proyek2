@@ -67,7 +67,7 @@ $start = ($page - 1) * $per_hal;
 		// select o.nama_operator from kulak_pulsa k inner join operator o ON k.id_operator= o.id_operator WHERE o.nama_operator like '$cari'
 		$pls=mysql_query("select * from kulak_pulsa where nama like '$cari' or jenis like '$cari'");
 	}else{
-		$pls=mysqli_query($con,"SELECT DISTINCT k.id_kulakpulsa, o.nama_operator,p.namapenyedia,pl.nominal, dp.harga, a.usernameAdmin, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa ORDER BY k.id_kulakpulsa ASC LIMIT $start,$per_hal" );
+		$pls=mysqli_query($con,"SELECT DISTINCT k.id_kulakpulsa, o.nama_operator,p.namapenyedia,pl.nominal, dp.harga, a.usernameAdmin, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa ORDER BY dp.harga ASC LIMIT $start,$per_hal" );
 	}
 	$no=1;
 	while($b=mysqli_fetch_array($pls)){
