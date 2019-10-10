@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 02, 2019 at 04:34 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.2.22
+-- Host: 127.0.0.1
+-- Generation Time: Oct 10, 2019 at 03:39 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `usernameAdmin`, `passwordAdmin`, `foto`) VALUES
-(1, 'adminkulak', 'adminkulak', 'admin1.jpg');
+(1, 'admin1', 'admin1', 'admin/foto/admin1.jpg'),
+(2, 'admin2', 'admin2', 'admin/foto/admin2.jpg'),
+(3, 'admin3', 'admin3', 'admin/foto/admin3.jpg');
 
 -- --------------------------------------------------------
 
@@ -173,8 +175,16 @@ INSERT INTO `pulsa` (`id_pulsa`, `namapulsa`, `nominal`) VALUES
 CREATE TABLE `user` (
   `id_user` int(5) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL,
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `foto`) VALUES
+(1, 'bayuaji', 'ochieira2234', 'admin/foto/admin2.jpg');
 
 --
 -- Indexes for dumped tables
@@ -242,7 +252,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detailkulakpulsa`
@@ -272,7 +282,7 @@ ALTER TABLE `operator`
 -- AUTO_INCREMENT for table `penyedia`
 --
 ALTER TABLE `penyedia`
-  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pulsa`
@@ -284,7 +294,7 @@ ALTER TABLE `pulsa`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
