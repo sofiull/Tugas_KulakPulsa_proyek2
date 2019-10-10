@@ -3,7 +3,7 @@ include 'header.php';
 ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Detail Pulsa</h3>
-<a class="btn" href="barang.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
+<a class="btn" href="data_pulsa.php"><span class="glyphicon glyphicon-arrow-left"></span>  Kembali</a>
 
 <?php
 $id_pulsa=mysqli_real_escape_string($con, $_GET['id']);
