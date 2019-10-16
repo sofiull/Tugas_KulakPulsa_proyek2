@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 
 <h3><span class="glyphicon glyphicon-briefcase"></span>  Data Harga Pulsa</h3>
-<button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span>Tambah / Import Data</button>
+<button style="margin-bottom:20px" class="btn btn-info col-md-2" onclick="window.location.href='importdata.php'"><span class="glyphicon glyphicon-plus"></span>Tambah / Import Data</button>
 <br/>
 <br/>
 
@@ -112,50 +112,7 @@ $start = ($page - 1) * $per_hal;
 			}
 			?>						
 		</ul>
-<!-- modal input -->
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Tambah Barang Baru</h4>
-			</div>
-			<div class="modal-body">
-				<form action="tmb_brg_act.php" method="post">
-					<div class="form-group">
-						<label>Nama Barang</label>
-						<input name="nama" type="text" class="form-control" placeholder="Nama Barang ..">
-					</div>
-					<div class="form-group">
-						<label>Jenis</label>
-						<input name="jenis" type="text" class="form-control" placeholder="Jenis Barang ..">
-					</div>
-					<div class="form-group">
-						<label>Suplier</label>
-						<input name="suplier" type="text" class="form-control" placeholder="Suplier ..">
-					</div>
-					<div class="form-group">
-						<label>Harga Modal</label>
-						<input name="modal" type="text" class="form-control" placeholder="Modal per unit">
-					</div>	
-					<div class="form-group">
-						<label>Harga Jual</label>
-						<input name="harga" type="text" class="form-control" placeholder="Harga Jual per unit">
-					</div>	
-					<div class="form-group">
-						<label>Jumlah</label>
-						<input name="jumlah" type="text" class="form-control" placeholder="Jumlah">
-					</div>																	
 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-					<input type="submit" class="btn btn-primary" value="Simpan">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 
 
 
