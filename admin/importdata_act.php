@@ -16,6 +16,7 @@ if (isset($_POST["import"])) {
             if (! empty($result)) {
                 $type = "success";
                 $message = "CSV Data Imported into the Database";
+                header("location:data_pulsa.php");
             } else {
                 $type = "error";
                 $message = "Problem in Importing CSV Data";
