@@ -62,10 +62,10 @@ $start = ($page - 1) * $per_hal;
 	</tr>
 	<?php 
 	if(isset($_GET['cari'])){
-		$cari=mysql_real_escape_string($_GET['cari']);
+		$cari=$_GET['cari'];
 		// Test It:
 		// select o.nama_operator from kulak_pulsa k inner join operator o ON k.id_operator= o.id_operator WHERE o.nama_operator like '$cari'
-		$pls=mysql_query("select * from kulak_pulsa where nama like '$cari' or jenis like '$cari'");
+		$pls=mysqli_query($con, "SELECT * FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE nama_operator LIKE '%".$cari."%' OR namapenyedia LIKE '%".$cari."%'" );
 	}else{
 		$pls=mysqli_query($con,"SELECT DISTINCT k.id_kulakpulsa, o.nama_operator,p.namapenyedia,pl.nominal, dp.harga, a.usernameAdmin, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND a.id_admin = k.publisher ORDER BY dp.harga ASC LIMIT $start,$per_hal" );
 	}
