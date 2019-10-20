@@ -107,7 +107,7 @@ CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `foto` blob NOT NULL,
+  `foto` varchar(100) NOT NULL,
   `status` enum('Admin','User','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

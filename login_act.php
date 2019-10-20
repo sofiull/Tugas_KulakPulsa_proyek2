@@ -6,9 +6,9 @@ $pass=$_POST['pass'];
 $jenisUser=$_POST['jenisUser'];
 $pas=md5($pass);
 if ($jenisUser == "1") {
-	$query=mysqli_query($con,"select * from admin where usernameAdmin='$uname' and passwordAdmin='$pass'")or die(mysqli_error());
+	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pass' and status='Admin'")or die(mysqli_error());
 }else{
-	$query=mysqli_query($con,"select * from user where username='$uname' and password='$pass'")or die(mysqli_error());
+	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pass' and status='User'")or die(mysqli_error());
 }
 
 if(mysqli_num_rows($query)==1){
