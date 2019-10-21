@@ -9,7 +9,7 @@ if (isset($_POST["import"])) {
         $file = fopen($fileName, "r");
         
         while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
-            $sqlInsert = "INSERT into kulak_pulsa (id_operator,id_penyedia,id_detailkulakpulsa,publisher,tanggal)
+            $sqlInsert = "INSERT into kulak_pulsa (id_operator,id_penyedia,id_detailkulakpulsa,id_publisher,tanggal)
                    values ('" . $column[0] . "','" . $column[1] . "','" . $column[2] . "','" . $column[3] . "','" . $column[4] . "')";
             $result = mysqli_query($con, $sqlInsert);
             
