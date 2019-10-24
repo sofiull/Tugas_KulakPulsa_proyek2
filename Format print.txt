@@ -1,0 +1,9 @@
+
+~Cetakan Tanggal: 22/10/1998
+nama admin
+
+putri reload
+
+|Operator |Nminal|Harga|
+------------------------
+|telkomsel|5000	 |6000 |
