@@ -4,11 +4,11 @@ include 'admin/config.php';
 $uname=$_POST['uname'];
 $pass=$_POST['pass'];
 $jenisUser=$_POST['jenisUser'];
-$pas=md5($pass);
+$pas=sha1($pass);
 if ($jenisUser == "1") {
-	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pass' and status='Admin'")or die(mysqli_error());
+	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pas' and status='Admin'")or die(mysqli_error());
 }else{
-	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pass' and status='User'")or die(mysqli_error());
+	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pas' and status='User'")or die(mysqli_error());
 }
 
 if(mysqli_num_rows($query)==1){

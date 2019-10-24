@@ -3,6 +3,7 @@
 <head>
 	<?php 
 	session_start();
+
 	include 'cek.php';
 	include 'config.php';
 	?>
@@ -24,7 +25,12 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="#"><font size="3px">Hey , <?php echo $_SESSION['uname']?>&nbsp&nbsp</font>
-						<img class="img-circle" alt="Cinque Terre" height="35" weight="30" src="foto/admin2.jpg">
+						<?php 
+						$foto = mysqli_query($con,"SELECT foto FROM users WHERE username='admin1'");
+						$catch_foto=mysqli_fetch_array($foto);
+						echo "<img class='img-circle' alt='Cinque Terre' height='35' weight='30' src='foto/".$catch_foto["foto"]."'>";
+						?>
+						
 						</a>
 					</li>
 				</ul>
@@ -70,3 +76,4 @@
 		</ul>
 	</div>
 	<div class="col-md-10">
+

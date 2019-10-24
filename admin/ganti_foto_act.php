@@ -7,16 +7,16 @@ $foto=$_FILES['foto']['name'];
 // 	mysql_query("update admin set foto='$foto' where uname='$user'");
 
 
-$u=mysqli_query("select * from user where username='$user'");
+$u=mysqli_query("select foto from users where username='$user'");
 $us=mysqli_fetch_array($u);
 if(file_exists("foto/".$us['foto'])){
 	unlink("foto/".$us['foto']);
 	move_uploaded_file($_FILES['foto']['tmp_name'], "foto/".$_FILES['foto']['name']);
-	mysqli_query("update admin set foto='$foto' where uname='$user'");
+	mysqli_query($con,"update users set foto='$foto' where username='$user'");
 	header("location:ganti_foto.php?pesan=oke");
 }else{
 	move_uploaded_file($_FILES['foto']['tmp_name'], "foto/".$_FILES['foto']['name']);
-	mysqli_query("update admin set foto='$foto' where uname='$user'");
+	mysqli_query($con,"update admin set foto='$foto' where username='$user'");
 	header("location:ganti_foto.php?pesan=oke");
 }
 ?>
