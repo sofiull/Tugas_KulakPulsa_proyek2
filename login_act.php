@@ -8,7 +8,8 @@ $pas=sha1($pass);
 if ($jenisUser == "1") {
 	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pas' and status='Admin'")or die(mysqli_error());
 }else{
-	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pas' and status='User'")or die(mysqli_error());
+	$query=mysqli_query($con,"select * from users where username='$uname' and password='$pas' and status='User'")or die(mysqli_error(.
+		''));
 }
 
 if(mysqli_num_rows($query)==1){
