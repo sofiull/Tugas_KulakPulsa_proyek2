@@ -4,6 +4,6 @@ nama admin
 
 putri reload
 
-|Operator |Nminal|Harga|
+| Operator | Nominal |  Harga  |
 ------------------------
 |telkomsel|5000	 |6000 |

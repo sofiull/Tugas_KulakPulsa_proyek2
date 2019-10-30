@@ -7,9 +7,10 @@ include 'header.php';
 
 <?php
 $id_pulsa=mysqli_real_escape_string($con, $_GET['id']);
+$id=$_GET['id'];
 
+$det=mysqli_query($con, "SELECT DISTINCT k.id_kulakpulsa, o.nama_operator, p.namapenyedia,pl.nominal, dp.harga, u.username, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , users u WHERE k.id_kulakpulsa = ".$id." AND o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND dp.id_detailkulakpulsa = pl.id_pulsa AND u.id_user = k.id_publisher");
 
-$det=mysqli_query($con, "SELECT DISTINCT k.id_kulakpulsa, o.nama_operator,p.namapenyedia,pl.nominal, dp.harga, a.usernameAdmin, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , admin a WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND a.id_admin = k.publisher")or die(mysqli_error());
 while($d=mysqli_fetch_array($det)){
 	?>					
 	<table class="table">
@@ -31,7 +32,7 @@ while($d=mysqli_fetch_array($det)){
 		</tr>
 		<tr>
 			<td>Publisher</td>
-			<td><?php echo($d['usernameAdmin']) ?></td>
+			<td><?php echo($d['username']) ?></td>
 		</tr>
 		<tr>
 			<td>Tanggal</td>
