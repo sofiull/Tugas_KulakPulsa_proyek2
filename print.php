@@ -12,7 +12,7 @@ while ($datapenyedia=mysqli_fetch_array($data_penyedia)){
 	shell_exec("echo $'>".$datapenyedia["namapenyedia"]." \n' >> /dev/usb/lp0");
 	shell_exec("echo $'| Operator | Nominal |  Harga  |' >> /dev/usb/lp0");
 	while($data=mysqli_fetch_array($database)){
-		shell_exec("echo $'".$row["nama_operator"]."  |  ".$row["nominal"]."  |  ".$row["harga"]."'")
+		shell_exec("echo $'".$row["nama_operator"]."  |  ".$row["nominal"]."  |  ".$row["harga"]."' >> /dev/usb/lp0")
 	}
 }
 // $teks="aw";
