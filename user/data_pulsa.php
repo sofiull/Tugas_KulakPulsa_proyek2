@@ -40,7 +40,7 @@ $start = ($page - 1) * $per_hal;
 			<td><?php echo $halaman; ?></td>
 		</tr>
 	</table>
-	<a style="margin-bottom:10px" href="lap_datapulsa.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
+	<a style="margin-bottom:10px" href="print.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
 </div>
 <form action="cari_act.php" method="get">
 	<div class="input-group col-md-5 col-md-offset-7">
@@ -65,9 +65,9 @@ $start = ($page - 1) * $per_hal;
 		$cari=$_GET['cari'];
 		// Test It:
 		// select o.nama_operator from kulak_pulsa k inner join operator o ON k.id_operator= o.id_operator WHERE o.nama_operator like '$cari'
-		$pls=mysqli_query($con, "SELECT DISTINCT k.id_kulakpulsa, o.nama_operator, p.namapenyedia,pl.nominal, dp.harga, u.username, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , users u WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND dp.id_detailkulakpulsa = pl.id_pulsa AND u.id_user = k.id_publisher AND nama_operator LIKE '%".$cari."%' OR namapenyedia LIKE '%".$cari."%'" );
+		$pls=mysqli_query($con, "SELECT DISTINCT k.id_kulakpulsa, o.nama_operator, p.namapenyedia,pl.nominal, dp.harga, u.username, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , users u WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND dp.id_pulsa = pl.id_pulsa AND u.id_user = k.id_publisher AND nama_operator LIKE '%".$cari."%' OR namapenyedia LIKE '%".$cari."%'" );
 	}else{
-		$pls=mysqli_query($con,"SELECT DISTINCT k.id_kulakpulsa, o.nama_operator, p.namapenyedia,pl.nominal, dp.harga, u.username, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , users u WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND dp.id_detailkulakpulsa = pl.id_pulsa AND u.id_user = k.id_publisher ORDER BY dp.harga ASC LIMIT $start,$per_hal" );
+		$pls=mysqli_query($con,"SELECT DISTINCT k.id_kulakpulsa, o.nama_operator, p.namapenyedia,pl.nominal, dp.harga, u.username, k.tanggal FROM kulak_pulsa k , operator o , penyedia p , pulsa pl , infopenyedia ip , detailkulakpulsa dp , users u WHERE o.id_operator =k.id_operator AND k.id_penyedia = p.id_penyedia AND k.id_detailkulakpulsa = dp.id_detailkulakpulsa AND dp.id_pulsa = pl.id_pulsa AND u.id_user = k.id_publisher ORDER BY dp.harga ASC LIMIT $start,$per_hal" );
 	}
 	$no=1;
 	while($b=mysqli_fetch_array($pls)){

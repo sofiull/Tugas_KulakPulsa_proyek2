@@ -3,17 +3,17 @@ include 'header.php';
 ?>
 
 <?php
-$con=mysqli_connect("localhost","root",""); 
-$a = mysqli_query($con,"select * from barang_laku");
-$sql= mysqli_query($con, "SELECT * FROM kulak_pulsa ORDER BY tanggal ASC LIMIT 1");
-$row= mysqli_fetch_array($sql, MYSQLI_ASSOC);
-
+$lastUpdate= mysqli_query($con, "SELECT tanggal FROM kulak_pulsa ORDER BY tanggal ASC LIMIT 1");
 ?>
 
 <div class="col-md-10">
-	<h1>Selamat datang</h1>
-	<h3>Update Terakhir: </h3>	
-	<h3><?php echo $row['tanggal']?></h3>
+	<h1>Selamat datang, </h1>
+	<?php 
+		while($data=mysqli_fetch_array($lastUpdate))
+		{
+	 ?>
+	<h5>Update Terakhir: <?php echo $data['tanggal']?></h5>
+<?php }?>
 </div>
 <!-- kalender -->
 <div class="pull-right">
@@ -22,5 +22,4 @@ $row= mysqli_fetch_array($sql, MYSQLI_ASSOC);
 
 <?php 
 include 'footer.php';
-
 ?>

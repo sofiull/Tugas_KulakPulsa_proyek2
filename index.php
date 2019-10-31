@@ -33,7 +33,7 @@
 					<h3>Silahkan Login ..</h3>
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-						<input type="text" class="form-control" placeholder="Username" name="uname">
+						<input type="text" autofocus class="form-control" placeholder="Username" name="uname">
 					</div>
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
