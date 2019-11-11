@@ -10,11 +10,10 @@ shell_exec("echo ".$cetakan." >> /dev/usb/lp0");
 shell_exec("echo $'".$_SESSION['uname']." \n' >> /dev/usb/lp0");
 while ($datapenyedia=mysqli_fetch_array($data_penyedia)){
 	shell_exec("echo $'>".$datapenyedia["namapenyedia"]." \n' >> /dev/usb/lp0");
-	shell_exec("echo $'| Operator | Nominal | Harga |' >> /dev/usb/lp0");
+	shell_exec("echo $'| Operator | Nominal |  Harga  |' >> /dev/usb/lp0");
 	while($row=mysqli_fetch_array($database)){
-		shell_exec("echo $'| ".$row["nama_operator"]." | ".$row["nominal"]." | ".$row["harga"]." |' >> /dev/usb/lp0");
+		shell_exec("echo $'"   .$row["nama_operator"]."|   ".$row["nominal"]."|   ".$row["harga"]."' >> /dev/usb/lp0")
 	}
-	shell_exec("echo '\n' >> /dev/usb/lp0");
 }
 // $teks="aw";
 // shell_exec("echo $'@teks' >> /dev/usb/lp0");
