@@ -5,6 +5,7 @@ include 'header.php';
 <?php
 $lastUpdate= mysqli_query($con, "SELECT tanggal FROM kulak_pulsa ORDER BY tanggal DESC LIMIT 1");
 $simpan;
+error_reporting(0);
 ?>
 
 <div class="col-md-10">
