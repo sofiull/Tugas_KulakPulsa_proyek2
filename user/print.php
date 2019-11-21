@@ -5,7 +5,7 @@ $database=mysqli_query($con, "SELECT DISTINCT k.id_kulakpulsa, o.nama_operator, 
 $data_penyedia=mysqli_query($con, "SELECT DISTINCT namapenyedia FROM penyedia");
 $today = date("d/m/Y");
 $operatorLen = 10;
-$nominalLen = 7;
+$nominalLen = 8;
 $hargaLen = 6;
 $cetakan="Cetakan Tanggal: ".$today;
 // echo "Cetakan Tanggal:".$today."\n";
@@ -45,7 +45,6 @@ while ($datapenyedia=mysqli_fetch_array($data_penyedia)){
 	// Simpannn !!!
 		// variable untuk while
 		$i=0;
-
 		// tambah karakter spasi di kiri
 		while ($i < ($operatorLen - $operator)/2){
 			$namaOperator="&nbsp".$namaOperator."&nbsp";
@@ -53,7 +52,7 @@ while ($datapenyedia=mysqli_fetch_array($data_penyedia)){
 			// shell_exec("echo $'| ".$namaOperator." | ".$totalNominal." | ".$totalHarga."|' >> /dev/usb/lp0");
 		}
 		$i=0;
-		while ($i <= ($nominalLen - $nominal)%2){
+		while ($i < ($nominalLen - $nominal)%2){
 			$totalNominal="&nbsp".$totalNominal;
 			$i++;
 			// shell_exec("echo $'| ".$namaOperator." | ".$totalNominal." | ".$totalHarga."|' >> /dev/usb/lp0");
@@ -69,8 +68,19 @@ while ($datapenyedia=mysqli_fetch_array($data_penyedia)){
 		$i=0;
 		while ($i < ($operatorLen - $operator)%2){
 			$namaOperator=$namaOperator."&nbsp";
+			$i++;
+			// shell_exec("echo $'| ".$namaOperator." | ".$totalNominal." | ".$totalHarga."|' >> /dev/usb/lp0");
+		}
+		$i=0;
+		while ($i < ($nominalLen - $nominal)%2){
 			$totalNominal=$totalNominal."&nbsp";
+			$i++;
+			// shell_exec("echo $'| ".$namaOperator." | ".$totalNominal." | ".$totalHarga."|' >> /dev/usb/lp0");
+		}
+		$i=0;
+		while ($i < ($hargaLen - $harga)%2){
 			$totalHarga=$totalHarga."&nbsp";
+
 			$i++;
 			// shell_exec("echo $'| ".$namaOperator." | ".$totalNominal." | ".$totalHarga."|' >> /dev/usb/lp0");
 		}
