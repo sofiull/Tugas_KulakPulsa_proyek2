@@ -53,9 +53,8 @@ while ($datapenyedia=mysqli_fetch_array($data_penyedia)){
 		}
 		$i=0;
 		while ($i < ($nominalLen - $nominal)%2){
-			$totalNominal="&nbsp".$totalNominal;
+			$totalNominal=" &nbsp".$totalNominal;
 			$i++;
-			// shell_exec("echo $'| ".$namaOperator." | ".$totalNominal." | ".$totalHarga."|' >> /dev/usb/lp0");
 		}
 		$i=0;	
 		while ($i < ($hargaLen - $harga)%2){

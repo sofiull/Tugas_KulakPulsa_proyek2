@@ -33,7 +33,6 @@ $jum=mysqli_fetch_row($jumlah_record);
 $halaman=ceil($jum[0] / $per_hal);
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $per_hal;
-
 // error_reporting(0);
 ?>
 <div class="col-md-12">
@@ -94,7 +93,14 @@ $start = ($page - 1) * $per_hal;
 				<td>
 					<center>
 					<a href="det_pulsa.php?id=<?php echo $b['id_kulakpulsa']; ?>" class="btn btn-info">Detail</a>
-					<a href="https://wa.me/<?php echo $b['no_telp']?>?text=PULSA <?php echo $b['nominal']?> <?php echo $b['nama_operator']?>" class="btn btn-danger">Beli</a>
+					<?php 
+						$temp_noTelpPenyedia=$b['no_telp'];
+						$temp_namaOperator=$b['nama_operator'];
+						$temp_nominal=$b['nominal'];
+						$temp_harga=$b['harga'];
+					?>
+					<!-- <a href="https://wa.me/<?php echo $b['no_telp']?>?text=PULSA <?php echo $b['nominal']?> <?php echo $b['nama_operator']?>" class="btn btn-danger">Beli</a> -->
+					<button data-toggle="modal" data-target="#myModal" class="btn btn-danger">Beli</button>
 					</center>
 				</td>
 			</tr>		
@@ -104,15 +110,41 @@ $start = ($page - 1) * $per_hal;
 	<tbody>
 </table>
 <ul class="pagination">			
-			<?php 
-			for($x=1;$x<=$halaman;$x++){
-				?>
-				<li><a href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
-				<?php
-			}
-			?>						
-		</ul>
+	<?php 
+	for($x=1;$x<=$halaman;$x++){
+		?>
+		<li><a href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
+		<?php
+	}
+	?>						
+</ul>
 
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-headesr">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Masukkan Nomor</h4>
+			</div>
+			<div class="modal-body">
+				<form action="order.php" method="post">
+					<div class="form-group">
+						<label>Nomor Telpon Yang Dituju</label>
+						<input name="nomor_tujuan" type="text" class="form-control" placeholder="08xxxxxxxxxx">
+						<input name="no_penyedia" type="hidden" value="<?php echo $temp_noTelpPenyedia;?>">
+						<input name="nama_operator" type="hidden" value="<?php echo $temp_namaOperator;?>">
+						<input name="nominal" type="hidden" value="<?php echo $temp_nominal; ?>"> 
+						<input name="harga" type="hidden" value="<?php echo $temp_harga; ?>">
+					</div>	
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+					<input type="submit" class="btn btn-primary" value="Beli">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <?php 
 include 'footer.php';
